@@ -71,8 +71,8 @@
 
 <script>
 
-import serviceApi from "../../api/serviceApi.js";
-import routeApi from "../../api/routeApi.js";
+import serviceApi from "../../../../api/serviceApi.js";
+import routeApi from "../../../../api/routeApi.js";
 import axios from "axios";
 import {createToaster} from "@meforma/vue-toaster";
 const toaster = createToaster({

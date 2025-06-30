@@ -8,7 +8,7 @@
                      alt="breadcrumb">
                 <div
                     class="position-absolute start-0 top-0 w-100 h-100 text-center d-flex justify-content-center align-items-center flex-column">
-                    <div class="fs-1">Blog</div>
+                    <div class="fs-1 mb-3">Blog</div>
                     <div class="d-flex justify-content-center align-items-center">
                         <router-link :to="{name: 'home'}" class="text-decoration-none text-secondary">
                             Home
@@ -34,7 +34,7 @@
                         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
 
                             <!-- blog list -->
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-1.jpg`"
@@ -68,7 +68,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-2.jpg`"
@@ -99,7 +99,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-3.jpg`"
@@ -130,7 +130,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link :to="{name: 'singleBlog'}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-1.jpg`"
@@ -161,7 +161,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-2.jpg`"
@@ -192,7 +192,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
+                            <router-link :to="{name:'singleBlog',params:{id:'1'}}" class="p-3 background-effect text-decoration-none">
                                 <div class="border w-100 rounded-3 overflow-hidden">
                                     <div class="overflow-hidden">
                                         <img :src="`/images/blog/blog-3.jpg`"
@@ -277,7 +277,7 @@
                             <div class="fs-4 fw-medium mb-3">
                                 RECENT POST
                             </div>
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="text-decoration-none">
+                            <router-link :to="{name: 'singleBlog', params: {id: '1'}}" class="text-decoration-none">
                             <div class="d-flex justify-content-start align-items-center py-3">
                                 <div class="col-3">
                                     <img :src="`/images/blog/blog-1.jpg`" class="img-fluid object-fit-cover w-100 h-100"
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                             </router-link>
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="text-decoration-none">
+                            <router-link :to="{name: 'singleBlog', params: {id: '1'}}" class="text-decoration-none">
                             <div class="d-flex justify-content-start align-items-center py-3">
                                 <div class="col-3">
                                     <img :src="`/images/blog/blog-2.jpg`" class="img-fluid object-fit-cover w-100 h-100"
@@ -303,7 +303,7 @@
                                 </div>
                             </div>
                             </router-link>
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="text-decoration-none">
+                            <router-link :to="{name: 'singleBlog', params: {id: '1'}}" class="text-decoration-none">
                             <div class="d-flex justify-content-start align-items-center py-3">
                                 <div class="col-3">
                                     <img :src="`/images/blog/blog-3.jpg`" class="img-fluid object-fit-cover w-100 h-100"
@@ -316,7 +316,7 @@
                                 </div>
                             </div>
                             </router-link>
-                            <router-link :to="{name: 'singleBlog',params:{id:'1'}}" class="text-decoration-none">
+                            <router-link :to="{name: 'singleBlog', params: {id: '1'}}" class="text-decoration-none">
                             <div class="d-flex justify-content-start align-items-center py-3">
                                 <div class="col-3">
                                     <img :src="`/images/blog/blog-1.jpg`" class="img-fluid object-fit-cover w-100 h-100"

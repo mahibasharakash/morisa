@@ -4,48 +4,26 @@
     <section class="py-5">
         <div class="container">
             <div class="banner-owl-carousel owl-carousel owl-theme">
-                <div class="item">
-                    <div class="position-relative">
-                        <img :src="`/images/banner/banner-5.jpg`" class="img-fluid" alt="banner-1">
-                        <div
-                            class="position-absolute top-0 bottom-0 start-0 d-flex justify-content-center align-items-start flex-column z-1">
-                            <div class="col-md-8 p-5">
-                                <div class="small mb-4 fw-bold"> CLOTHING <br> NEW COLLECTION</div>
-                                <div class="fs-3 mb-3"> NEW ARRIVALS!</div>
-                                <div class="fs-1 fw-bold mb-3"> SUMMER FASHION</div>
-                                <div class="text-secondary mb-4 line-height-2">
-                                    We crack for this purely rock style with stitched quills in relief and metallic
-                                    hardware.
+                <template v-for="each in sliderData">
+                    <div class="item">
+                        <div class="position-relative">
+                            <img :src="each.file_path" class="img-fluid" alt="banner-1">
+                            <div class="position-absolute top-0 bottom-0 start-0 d-flex justify-content-center align-items-start flex-column z-1">
+                                <div class="col-md-8 p-5">
+                                    <div class="small mb-2 fw-bold text-uppercase"> {{each.category}} <br> NEW COLLECTION </div>
+                                    <div class="fs-3 mb-2 text-uppercase"> {{each.short_title}} </div>
+                                    <div class="fs-1 fw-bold mb-2 text-uppercase"> {{each.fashion_type}} FASHION</div>
+                                    <div class="text-secondary mb-4 line-height-2">
+                                        {{each.short_description}}
+                                    </div>
+                                    <router-link :to="{name:'shop',query:{category:each.category}}" class="btn btn-outline-dark px-4 px-md-5 py-2 py-md-3 rounded-0">
+                                        SHOP NOW
+                                    </router-link>
                                 </div>
-                                <router-link :to="{name: 'shop'}"
-                                             class="btn btn-outline-dark px-4 px-md-5 py-2 py-md-3 rounded-0">
-                                    SHOP NOW
-                                </router-link>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="position-relative">
-                        <img :src="`/images/banner/banner-4.jpg`" class="img-fluid" alt="banner-2">
-                        <div
-                            class="position-absolute top-0 bottom-0 start-0 d-flex justify-content-center align-items-start flex-column z-1">
-                            <div class="col-md-8 p-5">
-                                <div class="small mb-4 fw-bold"> T-SHIRT <br> NEW COLLECTION</div>
-                                <div class="fs-3 mb-3"> CLEAN & ELEGANT!</div>
-                                <div class="fs-1 fw-bold mb-3"> MODERN FASHION</div>
-                                <div class="text-secondary mb-4 line-height-2">
-                                    BlackBird collection of minimal, sleek and functional Carryalls were designed
-                                    with creatives in mind.
-                                </div>
-                                <router-link :to="{name: 'shop'}"
-                                             class="btn btn-outline-dark px-4 px-md-5 py-2 py-md-3 rounded-0">
-                                    SHOP NOW
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </template>
             </div>
         </div>
     </section>
@@ -53,25 +31,17 @@
     <!-- Who we are -->
     <section class="py-5">
         <div class="container">
-            <div class="py-4 w-100">
-                <div class="mb-3 text-center fw-bold text-light-gray">
-                    Who Are We
-                </div>
-                <div class="fs-1 text-center fw-medium mb-3">
-                    Welcome To Mimosa
-                </div>
+            <div class="py-4 w-100" v-if="aboutData">
+                <div class="mb-3 text-center fw-bold text-light-gray"> {{aboutData.title}} </div>
+                <div class="fs-1 text-center fw-medium mb-3"> {{aboutData.subTitle}} </div>
                 <div class="d-flex justify-content-center mb-3">
-                    <img :src="'/images/barrier.webp'" class="img-fluid" alt="barrier">
+                    <img :src="aboutData.file_path" class="img-fluid" alt="barrier">
                 </div>
                 <div class="text-center text-light-gray md-3 my-md-5 line-height-2">
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                    dolore eu feugiat nulla facilisis
-                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue
-                    duis dolore te feugait nulla
-                    facilisi.
+                    {{aboutData.description}}
                 </div>
                 <div class="text-center">
-                    <span class="fw-bold"> JOHN DOE </span> - <span class="text-secondary"> CEO MIMOSA </span>
+                    <span class="fw-bold text-uppercase"> {{aboutData.person}} </span> - <span class="text-secondary text-uppercase"> {{aboutData.designation}} MIMOSA </span>
                 </div>
             </div>
         </div>
@@ -81,60 +51,17 @@
     <section class="py-5">
         <div class="container">
             <div class="py-4 w-100">
-                <div class="fs-1 text-center fw-medium mb-4">
-                    Shop By Collections
-                </div>
+                <div class="fs-1 text-center fw-medium mb-4"> Shop By Collections </div>
                 <div class="collection-owl-carousel owl-carousel owl-theme">
-                    <div class="item">
-                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                            <img :src="`/images/product/product-01.jpg`" class="img-fluid object-fit-contain"
-                                 alt="product-01">
-                            <div class="text-center my-3 text-secondary text-opacity-75"> 03 products</div>
-                            <div class="text-center my-3 text-dark">
-                                Sweaters
-                            </div>
-                        </router-link>
-                    </div>
-                    <div class="item">
-                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                            <img :src="`/images/product/product-02.jpg`" class="img-fluid object-fit-contain"
-                                 alt="product-02">
-                            <div class="text-center my-3 text-secondary text-opacity-75"> 09 products</div>
-                            <div class="text-center my-3 text-dark">
-                                Jackets
-                            </div>
-                        </router-link>
-                    </div>
-                    <div class="item">
-                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                            <img :src="`/images/product/product-03.jpg`" class="img-fluid object-fit-contain"
-                                 alt="product-03">
-                            <div class="text-center my-3 text-secondary text-opacity-75"> 01 products</div>
-                            <div class="text-center my-3 text-dark">
-                                Porridge
-                            </div>
-                        </router-link>
-                    </div>
-                    <div class="item">
-                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                            <img :src="`/images/product/product-04.jpg`" class="img-fluid object-fit-contain"
-                                 alt="product-04">
-                            <div class="text-center my-3 text-secondary text-opacity-75"> 05 products</div>
-                            <div class="text-center my-3 text-dark">
-                                T-Shirt
-                            </div>
-                        </router-link>
-                    </div>
-                    <div class="item">
-                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                            <img :src="`/images/product/product-05.jpg`" class="img-fluid object-fit-contain"
-                                 alt="product-05">
-                            <div class="text-center my-3 text-secondary text-opacity-75"> 07 products</div>
-                            <div class="text-center my-3 text-dark">
-                                Accessories
-                            </div>
-                        </router-link>
-                    </div>
+                    <template v-for="each in shop_collection">
+                        <div class="item">
+                            <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                <img :src="each.file_path" class="img-fluid object-fit-contain" alt="product-01">
+                                <div class="text-center my-3 text-secondary text-opacity-75"> {{each.product_count}} products</div>
+                                <div class="text-center my-3 text-dark"> {{each.category}} </div>
+                            </router-link>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -148,274 +75,52 @@
                     Featured Products
                 </div>
                 <div class="text-secondary text-opacity-75 text-center d-flex justify-content-center my-4">
-                    <div class="col-md-6 col-xl-5 mb-3 line-height-2">
-                        Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
-                        formas.
+                    <div class="col-md-6 col-xl-5 mb-3 line-height-2" v-if="featured_products.short_description">
+                        {{featured_products.short_description}}
                     </div>
                 </div>
                 <div class="gallery w-100">
-
-                    <!-- filter btn group -->
                     <div class="d-flex justify-content-center align-items-center flex-wrap mb-4">
-                        <button type="button" class="btn border-0 bg-dark text-white px-4 py-2 mx-2 rounded-0">
-                            Clothing
-                        </button>
-                        <button type="button" class="btn border-0 bg-secondary-subtle px-4 py-2 mx-2 rounded-0">
-                            Handbags
-                        </button>
-                        <button type="button" class="btn border-0 bg-secondary-subtle px-4 py-2 mx-2 rounded-0">
-                            Shoes
-                        </button>
-                        <button type="button" class="btn border-0 bg-secondary-subtle px-4 py-2 mx-2 rounded-0">
-                            Accessories
-                        </button>
+                        <template v-for="each in featured_products.category">
+                            <button type="button" class="btn border-0 bg-dark text-white px-4 py-2 mx-2 rounded-0">
+                                {{each}}
+                            </button>
+                        </template>
                     </div>
-
                     <div class="feature-product-owl-carousel owl-carousel owl-theme">
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-04.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
+                        <template v-for="each in featured_products.products">
+                            <div class="p-1">
+                                <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                    <div class="position-relative">
+                                        <img :src="each.file_path" class="img-fluid object-fit-contain" alt="product ">
+                                        <div class="position-absolute top-0 end-0 p-3">
+                                            <div class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
+                                                {{each.type}}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75">
-                                    $98.00
-                                </div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-05.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3 invisible">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
+                                    <div class="d-flex justify-content-between align-items-center py-3">
+                                        <div class="text-light-gray-hover cursor-pointer">
+                                            {{each.fabric}}
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <i class="bi bi-star-fill text-warning mx-1"></i>
+                                            <i class="bi bi-star-fill text-warning mx-1"></i>
+                                            <i class="bi bi-star-fill text-warning mx-1"></i>
+                                            <i class="bi bi-star-fill text-warning mx-1"></i>
+                                            <i class="bi bi-star-fill text-warning mx-1"></i>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
+                                    <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
+                                        {{each.short_description}}
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
+                                    <div class="fs-4 text-secondary text-opacity-75">
+                                        ${{parseFloat(each.price).toFixed(2)}}
                                     </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $26.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-06.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $46.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-07.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3 invisible">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $21.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-08.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $102.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-09.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3 invisible">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $98.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-10.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $116.00</div>
-                            </router-link>
-                        </div>
-                        <div class="p-1">
-                            <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                <div class="position-relative">
-                                    <img :src="`/images/product/product-11.jpg`" class="img-fluid object-fit-contain"
-                                         alt="product ">
-                                    <div class="position-absolute top-0 end-0 p-3 invisible">
-                                        <div
-                                            class="width-60 height-60 rounded-circle bg-dark d-flex justify-content-center align-items-center text-white">
-                                            Sale
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <div class="text-light-gray-hover cursor-pointer">
-                                        Chanel
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                        <i class="bi bi-star-fill text-warning mx-1"></i>
-                                    </div>
-                                </div>
-                                <div class="py-3 fs-6 fw-bold line-height-2 text-dark">
-                                    Dopo Designs Woolrich Klettersack Backpack
-                                </div>
-                                <div class="fs-4 text-secondary text-opacity-75"> $39.00</div>
-                            </router-link>
-                        </div>
+                                </router-link>
+                            </div>
+                        </template>
                     </div>
-
                 </div>
 
             </div>
@@ -427,18 +132,18 @@
         <div class="bg-light w-100">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 d-flex justify-content-end pt-5">
-                        <img :src="`/images/overview.webp`" class="img-fluid" alt="overview">
+                    <div class="col-md-6 d-flex justify-content-end pt-5" v-if="overViewContent.file_path">
+                        <img :src="overViewContent.file_path" class="img-fluid" alt="overview">
                     </div>
                     <div class="col-md-6 py-3">
-                        <div class="fs-1 fw-bold mb-4">
-                            EXPLORE EVERY PART OF THIS PRODUCTS
+                        <div class="fs-1 fw-bold mb-2" v-if="overViewContent.title">
+                            {{overViewContent.title}}
                         </div>
-                        <div class="text-light-gray mb-4 line-height-2">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <div class="text-light-gray mb-2 line-height-2" v-if="overViewContent.short_description">
+                            {{overViewContent.short_description}}
                         </div>
-                        <button type="button" class="btn border-0">
-                            <i class="bi bi-play-circle-fill me-1 fs-4"></i> <span class="fs-4"> Play Details </span>
+                        <button type="button" class="btn border-0 d-flex justify-content-start align-items-center">
+                            <i class="bi bi-play-circle-fill me-1 fs-1 my-0"></i> <span class="fs-4 ms-2 my-0"> Play Details </span>
                         </button>
                     </div>
                 </div>
@@ -457,7 +162,7 @@
                             <!-- On sale -->
                             <div class="row mb-4">
                                 <div class="col-7">
-                                    <div class="fw-medium fs-4"> On Sale</div>
+                                    <div class="fw-medium fs-4"> On Sale </div>
                                 </div>
                                 <div class="col-5">
                                     <hr class="border border-secondary w-100">
@@ -467,358 +172,100 @@
                             <!-- On sale carousel -->
                             <div class="on-sale-carousel owl-carousel owl-theme">
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.on_sale.slice(0, 3)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-02.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-03.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-04.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.on_sale.slice(3, 6)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-02.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-03.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-04.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.on_sale.slice(6, 9)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-02.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-03.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                        <div class="mb-4">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img :src="`/images/product/product-04.jpg`" class="img-fluid"
-                                                         alt="product">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-secondary text-opacity-75"> H&M</div>
-                                                        <div class="d-flex align-items-center justify-content-end">
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                            <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs
-                                                        Woolrich
-                                                    </div>
-                                                    <div class="d-flex align-items-center small">
-                                                        <span class="text-secondary me-3"> $100.00 </span>
-                                                        <span class="text-danger"> $80.00 </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                             </div>
 
@@ -828,7 +275,7 @@
                             <!-- Latest arrivals -->
                             <div class="row mb-4">
                                 <div class="col-7">
-                                    <div class="fw-medium fs-4"> Latest Arrivals</div>
+                                    <div class="fw-medium fs-4"> Latest Arrivals </div>
                                 </div>
                                 <div class="col-5">
                                     <hr class="border border-secondary w-100">
@@ -838,298 +285,100 @@
                             <!-- Latest arrivals carousel -->
                             <div class="latest-arrival-carousel owl-carousel owl-theme">
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-05.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.latest_arrivals.slice(0, 3)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-06.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-07.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-08.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                </div>
-                                <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-05.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-06.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                        <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-07.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
                                         </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-08.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
+                                    </template>
                                 </div>
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-05.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.latest_arrivals.slice(3, 6)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-06.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                        </router-link>
+                                    </template>
+                                </div>
+                                <div class="item">
+                                    <template v-for="each in categories_product.latest_arrivals.slice(6, 9)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-07.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-08.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                             </div>
 
@@ -1149,298 +398,100 @@
                             <!-- Top viewed carousel -->
                             <div class="top-viewed-carousel owl-carousel owl-theme">
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-09.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.top_view.slice(0, 3)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-10.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-11.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-09.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.top_view.slice(3, 6)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-10.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-11.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                                 <div class="item">
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-09.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                    <template v-for="each in categories_product.top_view.slice(6, 9)">
+                                        <router-link :to="{name:'singleProduct',params:{id:each.id}}" class="text-decoration-none">
+                                            <div class="mb-4">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img :src="each.file_path" class="img-fluid" alt="product">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-secondary text-opacity-75"> {{each.category}} </div>
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                                <i class="mx-1 bi bi-star-fill text-warning"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-1 fw-bold line-height-2 text-dark">
+                                                            {{each.title}}
+                                                        </div>
+                                                        <div class="d-flex align-items-center small">
+                                                            <span class="text-secondary me-3"> {{parseFloat(each.price).toFixed(2)}} </span>
+                                                            <span class="text-danger"> {{(parseFloat(each.price) * 0.8).toFixed(2)}} </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-10.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-11.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
-                                    <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none">
-                                    <div class="mb-4">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img :src="`/images/product/product-01.jpg`" class="img-fluid"
-                                                     alt="product">
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <div class="text-secondary text-opacity-75"> H&M</div>
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                        <i class="mx-1 bi bi-star-fill text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="py-3 fw-bold line-height-2 text-dark"> Copo Designs Woolrich</div>
-                                                <div class="text-secondary"> $100.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </router-link>
+                                        </router-link>
+                                    </template>
                                 </div>
                             </div>
 
@@ -1467,8 +518,7 @@
                                 <div class="fw-bold small mb-3"> New Arrivals</div>
                                 <div class="fw-medium fs-3 mb-3 line-height-2"> White Sneakers For Men’s</div>
                                 <div class="mt-3">
-                                    <router-link :to="{name: 'shop'}"
-                                                 class="text-decoration-none text-dark border-bottom border-2 border-dark pb-1 fw-bold">
+                                    <router-link :to="{name: 'shop'}" class="text-decoration-none text-dark border-bottom border-2 border-dark pb-1 fw-bold">
                                         SHOP NOW
                                     </router-link>
                                 </div>
@@ -1488,8 +538,7 @@
                                 <div class="fw-bold small mb-3">Products amazing!</div>
                                 <div class="fw-medium fs-3 mb-3 line-height-2"> Short T-Shirts For Women’s</div>
                                 <div class="mt-3">
-                                    <router-link :to="{name: 'shop'}"
-                                                 class="text-decoration-none text-dark border-bottom border-2 border-dark pb-1 fw-bold">
+                                    <router-link :to="{name: 'shop'}" class="text-decoration-none text-dark border-bottom border-2 border-dark pb-1 fw-bold">
                                         SHOP NOW
                                     </router-link>
                                 </div>
@@ -1637,7 +686,359 @@
 
 export default {
     data() {
-        return {}
+        return {
+            sliderData: [
+                {
+                    id: 1,
+                    file_path: '/images/banner/banner-5.jpg',
+                    category: 'CLOTHING',
+                    short_title: 'NEW ARRIVALS!',
+                    fashion_type: 'SUMMER',
+                    short_description: 'We crack for this purely rock style with stitched quills in relief and metallic hardware.'
+                },
+                {
+                    id: 2,
+                    file_path: '/images/banner/banner-4.jpg',
+                    category: 'T-SHIRT',
+                    short_title: 'CLEAN & ELEGANT!',
+                    fashion_type: 'MODERN',
+                    short_description: 'BlackBird collection of minimal, sleek and functional Carryalls were designed with creatives in mind.'
+                },
+            ],
+            aboutData: {
+                title: 'Who Are We',
+                subTitle: 'Welcome To Mimosa',
+                description: 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
+                file_path: '/images/barrier.webp',
+                person: 'John Doe',
+                designation: 'CEO',
+            },
+            shop_collection: [
+                {
+                    id: 1,
+                    file_path: '/images/product/product-01.jpg',
+                    product_count: '03',
+                    category: 'Sweaters',
+                },
+                {
+                    id: 2,
+                    file_path: '/images/product/product-02.jpg',
+                    product_count: '09',
+                    category: 'Jackets',
+                },
+                {
+                    id: 3,
+                    file_path: '/images/product/product-03.jpg',
+                    product_count: '01',
+                    category: 'Porridge',
+                },
+                {
+                    id: 4,
+                    file_path: '/images/product/product-04.jpg',
+                    product_count: '05',
+                    category: 'T-Shirt',
+                },
+                {
+                    id: 5,
+                    file_path: '/images/product/product-05.jpg',
+                    product_count: '07',
+                    category: 'Accessories',
+                },
+            ],
+            featured_products: {
+                short_description: '',
+                categories: [ 'Clothing', 'Handbags', 'Shoes', 'Accessories' ],
+                products: [
+                    {
+                        id: 1,
+                        file_path: '/images/product/product-04.jpg',
+                        type: 'Sale',
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 98
+                    },
+                    {
+                        id: 2,
+                        file_path: '/images/product/product-05.jpg',
+                        type: null,
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 94
+                    },
+                    {
+                        id: 3,
+                        file_path: '/images/product/product-06.jpg',
+                        type: 'Sale',
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 64
+                    },
+                    {
+                        id: 4,
+                        file_path: '/images/product/product-07.jpg',
+                        type: null,
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 39
+                    },
+                    {
+                        id: 5,
+                        file_path: '/images/product/product-08.jpg',
+                        type: 'Sale',
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 32
+                    },
+                    {
+                        id: 6,
+                        file_path: '/images/product/product-09.jpg',
+                        type: null,
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 89
+                    },
+                    {
+                        id: 7,
+                        file_path: '/images/product/product-10.jpg',
+                        type: 'Sale',
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 73
+                    },
+                    {
+                        id: 8,
+                        file_path: '/images/product/product-11.jpg',
+                        type: null,
+                        fabric: 'Chanel',
+                        short_description: 'Dopo Designs Woolrich Klettersack Backpack',
+                        price: 42
+                    },
+                ],
+            },
+            overViewContent: {
+                file_path: '/images/overview.webp',
+                title: 'EXPLORE EVERY PART OF THIS PRODUCTS',
+                short_description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            },
+            categories_product: {
+                on_sale: [
+                    {
+                        id: 1,
+                        file_path: '/images/product/product-01.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 2,
+                        file_path: '/images/product/product-02.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 3,
+                        file_path: '/images/product/product-03.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 4,
+                        file_path: '/images/product/product-04.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 5,
+                        file_path: '/images/product/product-05.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 6,
+                        file_path: '/images/product/product-06.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 7,
+                        file_path: '/images/product/product-07.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 8,
+                        file_path: '/images/product/product-08.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 9,
+                        file_path: '/images/product/product-09.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 10,
+                        file_path: '/images/product/product-10.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                ],
+                latest_arrivals: [
+                    {
+                        id: 1,
+                        file_path: '/images/product/product-01.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 2,
+                        file_path: '/images/product/product-02.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 3,
+                        file_path: '/images/product/product-03.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 4,
+                        file_path: '/images/product/product-04.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 5,
+                        file_path: '/images/product/product-05.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 6,
+                        file_path: '/images/product/product-06.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 7,
+                        file_path: '/images/product/product-07.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 8,
+                        file_path: '/images/product/product-08.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 9,
+                        file_path: '/images/product/product-09.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 10,
+                        file_path: '/images/product/product-10.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                ],
+                top_view: [
+                    {
+                        id: 1,
+                        file_path: '/images/product/product-01.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 2,
+                        file_path: '/images/product/product-02.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 3,
+                        file_path: '/images/product/product-03.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 4,
+                        file_path: '/images/product/product-04.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 5,
+                        file_path: '/images/product/product-05.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 6,
+                        file_path: '/images/product/product-06.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 7,
+                        file_path: '/images/product/product-07.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 8,
+                        file_path: '/images/product/product-08.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 9,
+                        file_path: '/images/product/product-09.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                    {
+                        id: 10,
+                        file_path: '/images/product/product-10.jpg',
+                        title: 'Copo Designs Woolrich',
+                        category: 'H&M',
+                        price: '100',
+                    },
+                ]
+            },
+        }
     },
     mounted() {
         this.bannerOwlCarousel();

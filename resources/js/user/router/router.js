@@ -13,9 +13,10 @@ import cart from "../page/cart.vue";
 import checkout from "../page/checkout.vue";
 
 /*---------- user authentication ----------*/
-import login from "../page/login.vue";
-import registration from "../page/registration.vue";
-import forget from "../page/forget.vue";
+import authLayout from "../page/auth/layout/layout.vue";
+import login from "../page/auth/pages/login.vue";
+import registration from "../page/auth/pages/registration.vue";
+import forget from "../page/auth/pages/forget.vue";
 
 /*---------- user content ----------*/
 import profileLayout from "../page/profile/layout/layout.vue";
@@ -35,11 +36,16 @@ const routes = [
             { path: ROOT_URL + 'single-blog/:id', name: 'singleBlog', component: singleBlog, meta: { title: TITLE + ' - Single Blog' } },
             { path: ROOT_URL + 'shop', name: 'shop', component: shop, meta: { title: TITLE + ' - Shop' } },
             { path: ROOT_URL + 'single-product/:id', name: 'singleProduct', component: singleProduct, meta: { title: TITLE + ' - Single Product' } },
-            { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - Login' } },
-            { path: ROOT_URL + 'registration', name: 'registration', component: registration, meta: { title: TITLE + ' - Registration' } },
-            { path: ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - Forget' } },
             { path: ROOT_URL + 'cart', name: 'cart', component: cart, meta: { title: TITLE + ' - Cart' } },
             { path: ROOT_URL + 'checkout', name: 'checkout', component: checkout, meta: { title: TITLE + ' - Checkout' } },
+            {
+                path: ROOT_URL, name: 'authLayout', component: authLayout,
+                children: [
+                    { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - Login' } },
+                    { path: ROOT_URL + 'registration', name: 'registration', component: registration, meta: { title: TITLE + ' - Registration' } },
+                    { path: ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - Forget' } },
+                ]
+            },
             {
                 path: ROOT_URL, name: 'profileLayout', component: profileLayout,
                 children: [

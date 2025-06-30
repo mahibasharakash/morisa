@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user');
 Route::get('/{any}', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user.any');
+Route::get('/auth/{any}', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user.auth.any');
 Route::get('/email-template', [\App\Http\Controllers\AppController::class, 'emailTemplate']);
 
 /* ----------------- Web Route Admin Portal ----------------- */

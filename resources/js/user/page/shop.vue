@@ -35,7 +35,7 @@
 
                             <!-- product list -->
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-01.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-02.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-03.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -128,7 +128,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-04.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -159,7 +159,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-05.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -190,7 +190,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-06.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -221,7 +221,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-07.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -252,7 +252,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-08.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -283,7 +283,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-09.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -314,7 +314,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-10.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -345,7 +345,7 @@
                             </div>
 
                             <div class="p-3 background-effect">
-                                <router-link :to="{name: 'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
+                                <router-link :to="{name:'singleProduct',params:{id:'1'}}" class="text-decoration-none text-dark">
                                     <div class="position-relative">
                                         <div class="overflow-hidden">
                                             <img :src="`/images/product/product-11.jpg`" class="img-fluid object-fit-contain w-100 image-effect" alt="product ">
@@ -377,8 +377,9 @@
 
                         </div>
 
-                        <!-- pagination -->
                         <div class="d-flex justify-content-between align-items-center border-top border-bottom my-4 py-3">
+
+                            <!-- pagination -->
                             <div aria-label="Page navigation example" class="front-pagination">
                                 <div class="pagination">
                                     <div class="page-item">
@@ -408,6 +409,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- pagination count by page limit -->
                             <div class="text-light-gray">
                                 Showing 1 - 12 of 13 items
                             </div>
@@ -415,14 +418,14 @@
 
                     </div>
                     <div class="col-lg-4 inner-shadow-search">
-                        <!-- search and sidebar -->
+
+                        <!-- search -->
                         <div class="px-2 py-3">
                             <div class="position-relative">
                                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                                     <i class="bi bi-search"></i>
                                 </div>
-                                <input type="text" name="keyword" class="form-control border shadow-none p-3 ps-5"
-                                       placeholder="Product search here . . ." required autocomplete="new-keyword">
+                                <input type="text" name="keyword" class="form-control border shadow-none p-3 ps-5" placeholder="Product search here . . ." required autocomplete="new-keyword">
                             </div>
                         </div>
                         <div class="px-2 py-3">
@@ -431,26 +434,22 @@
                                     <label for="min-price" class="form-label"> Min </label>
                                     <div class="position-relative">
                                         <input id="min-price" type="text" name="min-price" class="form-control border shadow-none p-3" value="0">
-                                        <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
-                                            $
-                                        </div>
+                                        <div class="position-absolute top-50 end-0 translate-middle-y pe-3"> $ </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <label for="max-price" class="form-label"> Max </label>
                                     <div class="position-relative">
                                         <input id="max-price" type="text" name="max-price" class="form-control border shadow-none p-3" value="10000">
-                                        <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
-                                            $
-                                        </div>
+                                        <div class="position-absolute top-50 end-0 translate-middle-y pe-3"> $ </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- categories -->
                         <div class="px-2 py-3">
-                            <div class="fs-4 fw-medium mb-3">
-                                Categories
-                            </div>
+                            <div class="fs-4 fw-medium mb-3"> Categories </div>
                             <a href="javascript:void(0)"
                                class="ps-1 p-2 w-100 text-decoration-none text-light-gray-hover d-block">
                                 Women (19)
@@ -482,10 +481,10 @@
                                 Vestibulum Ligula (17)
                             </a>
                         </div>
+
+                        <!-- brands -->
                         <div class="px-2 py-3">
-                            <div class="fs-4 fw-medium mb-3">
-                                Brand
-                            </div>
+                            <div class="fs-4 fw-medium mb-3"> Brand </div>
                             <a href="javascript:void(0)"
                                class="ps-1 p-2 w-100 text-decoration-none text-light-gray-hover d-block">
                                 Calvin Klein (11)
@@ -503,10 +502,10 @@
                                 Tommy Hilfiger (14)
                             </a>
                         </div>
+
+                        <!-- size -->
                         <div class="px-2 py-3">
-                            <div class="fs-4 fw-medium mb-3">
-                                Size
-                            </div>
+                            <div class="fs-4 fw-medium mb-3"> Size </div>
                             <a href="javascript:void(0)"
                                class="ps-1 p-2 w-100 text-decoration-none text-light-gray-hover d-block">
                                 L (14)
@@ -532,10 +531,10 @@
                                 XXL (13)
                             </a>
                         </div>
+
+                        <!-- color -->
                         <div class="px-2 py-3">
-                            <div class="fs-4 fw-medium mb-3">
-                                Color
-                            </div>
+                            <div class="fs-4 fw-medium mb-3"> Color </div>
                             <a href="javascript:void(0)"
                                class="ps-1 p-2 w-100 text-decoration-none text-light-gray-hover d-block">
                                 Black (12)
@@ -561,6 +560,7 @@
                                 White (13)
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
