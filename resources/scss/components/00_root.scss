@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 14px !important;
+}
+
+:root {
+    --theme: #ff2660;
+    --dark-theme: #d91f51;
+    --light-gray: #6c757d;
+    --light-theme: #FF266026;
+}
+
+#preloader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bs-white) !important;
+
+    .loader {
+        width: 60px;
+        aspect-ratio: 1;
+        display: flex;
+        color: #000;
+        border: 4px solid;
+        box-sizing: border-box;
+        border-radius: 50%;
+        background:
+            radial-gradient(circle 5px, currentColor 95%,#0000),
+            linear-gradient(currentColor 50%,#0000 0) 50%/4px 60% no-repeat;
+        animation: l1 2s infinite linear;
+    }
+    .loader:before {
+        content: "";
+        flex: 1;
+        background:linear-gradient(currentColor 50%,#0000 0) 50%/4px 80% no-repeat;
+        animation: inherit;
+    }
+    @keyframes l1 {
+        100% {transform: rotate(1turn)}
+    }
+
+}
+
+.scrollbar {
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 5px !important;
+        height: 5px !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--light-gray);
+        height: 5px !important;
+    }
+}
+
+$iteration: 2560;
+$base-value: 1px;
+@for $i from 1 through $iteration {
+    .width-#{$i} { width: $base-value * $i !important; }
+    .height-#{$i} { height: $base-value * $i !important; }
+    .height-calc-#{$i} { height: calc(100vh - $base-value * $i) !important; }
+    .min-width-#{$i} { min-width: $base-value * $i !important }
+}
