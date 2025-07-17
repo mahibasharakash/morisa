@@ -88,7 +88,7 @@
                             </li>
                             <li class="mb-1" v-if="UserInfo !== null">
                                 <router-link :to="{name: 'details'}" class="dropdown-item" :class="{ 'active' : $route.name === '' }">
-                                    {{UserInfo.name}}
+                                    {{UserInfo?.name}}
                                 </router-link>
                             </li>
                             <li class="mb-1" v-if="UserInfo !== null">

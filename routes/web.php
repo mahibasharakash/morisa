@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 /* ----------------- Web Route User Portal ----------------- */
 
-Route::get('/', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user');
-Route::get('/{any}', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user.any');
-Route::get('/auth/{any}', [\App\Http\Controllers\AppController::class, 'user'])->where('any', '.*')->name('lvs.user.auth.any');
-Route::get('/email-template', [\App\Http\Controllers\AppController::class, 'emailTemplate']);
+Route::get('/email-template', [AppController::class, 'emailTemplate']);
 
-/* ----------------- Web Route Admin Portal ----------------- */
+Route::middleware('adminLoginCheck')->get('/admin/auth/{any}', [AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin.auth.any');
+Route::middleware('adminLoginCheck')->get('/admin/auth', function () { return redirect()->route('lvs.admin.auth.any', 'login'); });
+Route::middleware('adminLoginCheck')->get('/admin', [AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin');
+Route::middleware('adminLoginCheck')->get('/admin/{any}', [AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin.any');
 
-Route::group(
-    ['middleware' => 'adminLoginCheck'],
-    function () {
-        Route::get('/admin/auth/', [\App\Http\Controllers\AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin.auth');
-        Route::get('/admin/auth/{any}', [\App\Http\Controllers\AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin.auth.any');
-        Route::get('/admin/auth', function () { return redirect()->route('lvs.admin.auth.any', 'login'); } );
-        Route::get('/admin/', [\App\Http\Controllers\AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin');
-        Route::get('/admin/{any}', [\App\Http\Controllers\AppController::class, 'admin'])->where('any', '.*')->name('lvs.admin.any');
-        Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'dashboard'); } );
-    }
-);
+Route::get('{any}', [AppController::class, 'user'])->where('any', '.*')->name('lvs.user.any');
+Route::get('/auth', function () { return redirect()->route('lvs.user.auth.any', 'sign-in'); });
+Route::get('/auth/{any}', [AppController::class, 'user'])->where('any', '.*')->name('lvs.user.auth.any');

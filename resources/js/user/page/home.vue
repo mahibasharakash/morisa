@@ -1058,8 +1058,8 @@ export default {
                 margin: 10,
                 nav: false,
                 animateOut: 'fadeOut',
-                autoplay: true,
-                autoplaySpeed: 7000,
+                // autoplay: true,
+                // autoplaySpeed: 7000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1082,9 +1082,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1113,9 +1113,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1144,9 +1144,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1175,9 +1175,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1200,9 +1200,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {
@@ -1225,9 +1225,9 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: true,
+                // autoplay: true,
                 slideTransition: 'linear',
-                autoplaySpeed: 4000,
+                // autoplaySpeed: 4000,
                 autoplayHoverPause: false,
                 responsive: {
                     0: {

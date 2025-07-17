@@ -214,7 +214,7 @@
                                 <router-link :to="{name: 'profile'}" class="dropdown-item">
                                     <i class="bi bi-person"></i>
                                     <span class="ms-2">
-                                        {{UserInfo.name}}
+                                        {{UserInfo?.name}}
                                     </span>
                                 </router-link>
                             </li>
