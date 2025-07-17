@@ -1,0 +1,36 @@
+{
+  "_index-!~{004}~.js": {
+    "file": "assets/index-Bk_mk6Qm.css",
+    "src": "_index-!~{004}~.js"
+  },
+  "_index-BF-3zfC_.js": {
+    "file": "assets/index-BF-3zfC_.js",
+    "name": "index",
+    "css": [
+      "assets/index-Bk_mk6Qm.css"
+    ]
+  },
+  "resources/js/admin/app.js": {
+    "file": "assets/app-Dz4sF6x8.js",
+    "name": "app",
+    "src": "resources/js/admin/app.js",
+    "isEntry": true,
+    "imports": [
+      "_index-BF-3zfC_.js"
+    ]
+  },
+  "resources/js/user/app.js": {
+    "file": "assets/app-DSN2y397.js",
+    "name": "app",
+    "src": "resources/js/user/app.js",
+    "isEntry": true,
+    "imports": [
+      "_index-BF-3zfC_.js"
+    ]
+  },
+  "resources/scss/style-sheet.scss": {
+    "file": "assets/style-sheet-Di-mRZ1s.css",
+    "src": "resources/scss/style-sheet.scss",
+    "isEntry": true
+  }
+}

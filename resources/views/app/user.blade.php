@@ -25,7 +25,6 @@
 
 </body>
     <script>
-
         window.core = {
             @if(\Illuminate\Support\Facades\Auth::guard('users')->check())
                 UserInfo: {!! \Illuminate\Support\Facades\Auth::guard('users')->user() !!},
@@ -35,7 +34,6 @@
             APP_NAME: 'Mimosa',
             APP_URL: '{{env('APP_URL')}}'
         };
-
         const loader = document.getElementById("preloader");
         window.addEventListener("load", function () {
                 setTimeout( () => {
@@ -43,7 +41,6 @@
                 }, 3000);
             }
         );
-
     </script>
 
     {{-- bootstrap bundle js --}}

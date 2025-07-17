@@ -8,7 +8,8 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/scss/style-sheet.scss',
-                'resources/js/admin/app.js'
+                'resources/js/admin/app.js',
+                'resources/js/user/app.js',
             ],
             refresh: true,
         }),
